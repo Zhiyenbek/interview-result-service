@@ -9,6 +9,7 @@ import (
 
 type ResultService interface {
 	CreateResult(req *models.CreateResultRequest) error
+	GetResult(publicID string) (*models.InterviewResults, error)
 }
 
 type Service struct {

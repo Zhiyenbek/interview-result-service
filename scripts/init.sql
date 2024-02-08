@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS areas (
 CREATE TABLE IF NOT EXISTS interviews (
     id SERIAL PRIMARY KEY,
     public_id UUID UNIQUE,
-    score INT
+    results JSONB
 );
 
 CREATE TABLE IF NOT EXISTS videos (
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS candidate_skills (
 
 CREATE TABLE IF NOT EXISTS user_interviews (
     candidate_id INT,
-    recruiter_id INT,
+    position_id INT,
     interview_id INT,
     PRIMARY KEY (candidate_id, recruiter_id, interview_id)
 );
@@ -92,7 +92,7 @@ ALTER TABLE users ADD CONSTRAINT fk_users_candidates FOREIGN KEY (public_id) REF
 ALTER TABLE users ADD CONSTRAINT fk_users_recruiters FOREIGN KEY (public_id) REFERENCES recruiters(public_id);
 ALTER TABLE user_interviews ADD CONSTRAINT fk_user_interviews_candidates FOREIGN KEY (candidate_id) REFERENCES candidates(id);
 ALTER TABLE user_interviews ADD CONSTRAINT fk_user_interviews_recruiters FOREIGN KEY (recruiter_id) REFERENCES recruiters(id);
-ALTER TABLE user_interviews ADD CONSTRAINT fk_user_interviews_interviews FOREIGN KEY (interview_id) REFERENCES interviews(id);
+ALTER TABLE user_interviews ADD CONSTRAINT fk_user_interviews_positions FOREIGN KEY (position_id) REFERENCES positions(id);
 ALTER TABLE companies ADD CONSTRAINT fk_companies_recruiters FOREIGN KEY (recruiter_id) REFERENCES recruiters(id);
 ALTER TABLE auth ADD CONSTRAINT fk_auth_users FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE positions_skills ADD CONSTRAINT fk_positions_skills_skills FOREIGN KEY (skills_id) REFERENCES skills(id);

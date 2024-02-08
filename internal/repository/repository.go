@@ -9,6 +9,7 @@ import (
 
 type ResultRepository interface {
 	CreateResult(result *models.InterviewResults) error
+	GetResult(publicID string) (*models.InterviewResults, error)
 }
 type Repository struct {
 	ResultRepository

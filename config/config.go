@@ -20,10 +20,10 @@ type AppConfig struct {
 type DBConf struct {
 	Host     string        `mapstructure:"host"`
 	Port     int           `mapstructure:"port"`
-	Username string        `mapstructure:"username"`
+	Username string        `mapstructure:"user"`
 	Password string        `mapstructure:"password"`
-	DBName   string        `mapstructure:"dbname"`
-	SSLMode  string        `mapstructure:"sslmode"`
+	DBName   string        `mapstructure:"db_name"`
+	SSLMode  string        `mapstructure:"ssl_mode"`
 	TimeOut  time.Duration `mapstructure:"timeout"`
 }
 

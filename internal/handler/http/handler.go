@@ -30,7 +30,7 @@ func (h *handler) InitRoutes() *gin.Engine {
 	router := gin.Default()
 	router.Use(cors.Default())
 	router.POST("/interview/result", h.CreateResult)
-
+	router.GET("/interview/result/:public_id", h.GetResult)
 	return router
 }
 
